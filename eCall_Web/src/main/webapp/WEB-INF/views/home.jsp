@@ -76,7 +76,7 @@
                     <!-- logo -->
                     <div class="navbar-brand">
                         <a href="index.html" >
-                            <img src="images/logo.png" alt="">
+                            <img src="images/logo.png" alt="logo">
                         </a>
                     </div>
                     <!-- /logo -->
