@@ -7,46 +7,41 @@
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 </head>
 <body>
-	<div class="container">
-		<div class="header">
-			<form>
-				<div class="logo">
-					<h1>
-						<a href="#">e-Call</a>
-					</h1>
-				</div>
-				<div class="menu">
-					<ul>
-						<li><a href="#" id="list_not">미처리 관제</a></li>
-						<li><a href="#" id="list_ing">처리중 관제</a></li>
-						<li><a href="#" id="list_ed">완료된 관제</a></li>
-						<li><a href="#" id="statistics">관제 통계</a></li>
-					</ul>
-				</div>
-			</form>
-		</div>
-		<div class="subheader">
-			<div class="toptext">
-				<h2>e-Call 관제 시스템</h2>
+	<div class="ecall-container">
+		<nav class="navbar navbar-default navbar-fixed-top">
+			<div class="container">
+				<form>
+					<div class="navbar-header">
+						<a class="navbar-brand" href="#">e-Call 관제 시스템</a>
+					</div>
+					<div id="navbar" class="navbar-collapse collapse">
+						<ul class="nav navbar-nav navbar-right">
+							<li><a href="#" id="list_not">미처리 관제</a></li>
+							<li><a href="#" id="list_ing">처리중 관제</a></li>
+							<li><a href="#" id="list_ed">완료된 관제</a></li>
+							<li><a href="#" id="statistics">관제 통계</a></li>
+						</ul>
+					</div>
+				</form>
 			</div>
-		</div>
+		</nav>
 
 		<div class="container_chart">
 			<div class="div_chart1">
 				<h3>사고 단말기 현황</h3>
-				<div id="chart1" style="width: 598px; height: 300px;"></div>
+				<div id="chart1" style="width: 598px; height: 280px;"></div>
 			</div>
 			<div class="div_chart2">
 				<h3>날짜별 사고 횟수 분포</h3>
-				<div id="chart2" style="width: 598px; height: 300px;"></div>
+				<div id="chart2" style="width: 598px; height: 280px;"></div>
 			</div>
 			<div class="div_chart3">
 				<h3>사고 담당자 현황</h3>
-				<div id="chart3" style="width: 598px; height: 300px;"></div>
+				<div id="chart3" style="width: 598px; height: 280px;"></div>
 			</div>
 			<div class="div_chart4">
 				<h3>사고 차종 현황</h3>
-				<div id="chart4" style="width: 598px; height: 300px;"></div>
+				<div id="chart4" style="width: 598px; height: 280px;"></div>
 			</div>
 		</div>
 	</div>

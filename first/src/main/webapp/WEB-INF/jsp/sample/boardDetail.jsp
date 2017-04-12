@@ -6,32 +6,28 @@
 <%@ include file="/WEB-INF/include/include-header.jspf"%>
 </head>
 <body>
-	<div class="container">
-		<div class="header">
-			<form>
-				<div class="logo">
-					<h1>
-						<a href="#">e-Call</a>
-					</h1>
-				</div>
-				<div class="menu">
-					<ul>
-						<li><a href="#" id="list_not">미처리 관제</a></li>
-						<li><a href="#" id="list_ing">처리중 관제</a></li>
-						<li><a href="#" id="list_ed">완료된 관제</a></li>
-						<li><a href="#" id="statistics">관제 통계</a></li>
-					</ul>
-				</div>
-			</form>
-		</div>
-		<div class="subheader">
-			<div class="toptext">
-				<h2>e-Call 관제 시스템</h2>
+	<div class="ecall-container">
+		<nav class="navbar navbar-default navbar-fixed-top">
+			<div class="container">
+				<form>
+					<div class="navbar-header">
+						<a class="navbar-brand" href="#">e-Call 관제 시스템</a>
+					</div>
+					<div id="navbar" class="navbar-collapse collapse">
+						<ul class="nav navbar-nav navbar-right">
+							<li><a href="#" id="list_not">미처리 관제</a></li>
+							<li><a href="#" id="list_ing">처리중 관제</a></li>
+							<li><a href="#" id="list_ed">완료된 관제</a></li>
+							<li><a href="#" id="statistics">관제 통계</a></li>
+						</ul>
+					</div>
+				</form>
 			</div>
-		</div>
-		<div id="myMap"
-			style="border: 1px solid #BBB; width: 750px; height: 750px; float: left; z-index: 0;"></div>
-		<div class="list">
+		</nav>
+		
+		<div class="ecall-controller">
+			<div id="myMap" style="border: 1px solid #BBB; width: 750px; height: 675px; float: left; z-index: 0;"></div>
+			<div class="ecall-control-list">
 			<h3>관제 상세보기</h3>
 			<table class="board_view">
 				<colgroup>
@@ -107,6 +103,7 @@
 			<a href="#this" class="btn" id="update">수정하기</a>
 			
 			<%@ include file="/WEB-INF/include/include-body.jspf"%>
+		</div>
 		</div>
 	</div>
 </body>
