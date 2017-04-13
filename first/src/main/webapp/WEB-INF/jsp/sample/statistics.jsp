@@ -12,7 +12,7 @@
 			<div class="container">
 				<form>
 					<div class="navbar-header">
-						<a class="navbar-brand" href="#">e-Call 관제 시스템</a>
+						<a class="navbar-brand" href="#">e-Call 관제센터</a>
 					</div>
 					<div id="navbar" class="navbar-collapse collapse">
 						<ul class="nav navbar-nav navbar-right">

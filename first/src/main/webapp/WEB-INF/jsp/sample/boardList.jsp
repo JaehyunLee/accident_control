@@ -11,7 +11,7 @@
 			<div class="container">
 				<form>
 					<div class="navbar-header">
-						<a class="navbar-brand" href="#">e-Call 관제 시스템</a>
+						<a class="navbar-brand" href="#">e-Call 관제센터</a>
 					</div>
 					<div id="navbar" class="navbar-collapse collapse">
 						<ul class="nav navbar-nav navbar-right">
@@ -26,25 +26,25 @@
 		</nav>
 
 		<div class="ecall-controller">
-		<div id="myMap" style="border: 1px solid #BBB; width: 750px; height: 675px; float: left; z-index: 0;"></div>
+		<div id="myMap" style="border: 1px solid #BBB; width: 800px; height: 675px; float: left; z-index: 0;"></div>
 
 		<div class="ecall-control-list">
-			<h3>관제현황</h3>
+			<h4>사고 처리 현황</h4>
 			<table class="board_list">
 				<colgroup>
-					<col width="15%" />
-					<col width="*" />
-					<col width="15%" />
-					<col width="15%" />
-					<col width="23%" />
+					<col style="width: 19%;"/>
+					<col style="width: 17%;"/>
+					<col style="width: 20%;"/>
+					<col style="width: 22%;"/>
+					<col style="width: 22%;"/>
 				</colgroup>
 				<thead>
 					<tr>
 						<th scope="col">관제번호</th>
-						<th scope="col">제목</th>
 						<th scope="col">담당자</th>
 						<th scope="col">진행상황</th>
 						<th scope="col">사고시간</th>
+						<th scope="col">사고접수</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -52,25 +52,9 @@
 						<c:when test="${fn:length(list) > 0}">
 							<c:forEach var="row" items="${list}" varStatus="status">
 								<tr>
-									<td>${row.eventID}</td>
-									<td class="title"><a href="#this" id="title">
-										
-										<!-- Geocode API -->
-										<script type="text/javascript">
-											var lat = ${row.positionLatitude};
-											var lon = ${row.positionLongitude};
-											var coords = new daum.maps.LatLng(lat, lon);
-											var geocoder = new daum.maps.services.Geocoder();
-											var name;
-											
-											geocoder.coord2detailaddr(coords, function(status, result) {
-												name = result[0].jibunAddress.name;
-											});
-											if (name != null)
-												document.write(name);											
-										</script>
-										
-									</a> <input type="hidden" id="IDX" value="${row.eventID}"></td>
+									<td class="detail">
+										<a href="#this" id="detail">${row.eventID}</a>
+										<input type="hidden" id="IDX" value="${row.eventID}"></td>
 									<td>${row.operatorName}</td>
 									<td><c:if test="${row.progress == 0}">
 									미처리
@@ -80,6 +64,11 @@
 									처리완료
 									</c:if></td>
 									<td>${row.timestamp}</td>
+									<td>
+										<button type="button" class="btn" data-toggle="modal" data-target="#myModal">
+											접수하기
+										</button>
+									</td>
 								</tr>
 							</c:forEach>
 						</c:when>
@@ -97,12 +86,62 @@
 					jsFunction="fn_search" />
 			</c:if>
 			<input type="hidden" id="currentPageNo" name="currentPageNo" /> <br />
-			<a href="#this" class="btn" id="write">메시지전송</a>
-
 			<%@ include file="/WEB-INF/include/include-body.jspf"%>
 		</div>
 		</div>
 	</div>
+
+	<!-- Modal -->
+	<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
+		aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title" id="myModalLabel">사고 접수</h4>
+				</div>
+				<div class="modal-body">
+
+					<ul class="list-group">
+						<li class="list-group-item list-group-item-warning"><b>운전자 상태</b></li>
+						<li class="list-group-item">
+							<input type="checkbox" id="checkbox1">							
+							<label for="checkbox1">의식 여부</label>
+						</li>
+						<li class="list-group-item">
+							<input type="checkbox" id="checkbox2">							
+							<label for="checkbox2">심정지 여부</label>
+						</li>
+						<li class="list-group-item">
+							<input type="checkbox" id="checkbox3">							
+							<label for="checkbox3">화상 여부</label>
+						</li>
+						<li class="list-group-item">
+							<input type="checkbox" id="checkbox4">							
+							<label for="checkbox4">호흡곤란 여부</label>
+						</li>
+						<li class="list-group-item">
+							<input type="checkbox" id="checkbox5">							
+							<label for="checkbox5">관통상 여부</label>
+						</li>
+						<li class="list-group-item">
+							<input type="checkbox" id="checkbox6">							
+							<label for="checkbox6">발작 여부</label>
+						</li>
+					</ul>
+					
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn" data-dismiss="modal">취소</button>
+					<button type="button" class="btn">저장하기</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
 </body>
 
 <script type="text/javascript">
@@ -112,7 +151,7 @@
 			fn_openBoardWrite();
 		});
 
-		$("a[id='title']").on("click", function(e) { //제목 
+		$("a[id='detail']").on("click", function(e) { // 상세보기
 			e.preventDefault();
 			fn_openBoardDetail($(this));
 		});
@@ -194,39 +233,59 @@
 	// daum map setting
 	var container = document.getElementById('myMap');
 	var options = {
-		center: new daum.maps.LatLng(36.5035230, 127.2538930),
+		center: new daum.maps.LatLng(36.5065230, 127.2538930),
 		level: 4
 	};
 	var map = new daum.maps.Map(container, options);
 	
 	var geocoder = new daum.maps.services.Geocoder();
 	
-	
-	function setMarker(latLng) {
+	function setMarker(latLng, eventID) {
 		searchDetailAddrFromCoords(latLng, function(status, result) {
-			if (status === daum.maps.services.Status.OK) {
-				
-				var marker = new daum.maps.Marker(),
-				infowindow = new daum.maps.InfoWindow({
-					zindex : 1
+			if (status === daum.maps.services.Status.OK) {		
+				var detailAddr = !!result[0].roadAddress.name ? 
+						result[0].roadAddress.name : '';
+				detailAddr += result[0].jibunAddress.name;
+
+				var content = '<div class="wrap">' + 
+				'    <div class="info">' + 
+				'        <div class="title">' + 
+				'            사고 위치' + 
+				'        </div>' + 
+				'        <div class="body">' + 
+				'            <div class="ellipsis">' +
+								detailAddr +
+				' 			 	<br>관제번호&nbsp;' +
+								eventID +
+				'			</div>' +  
+				'        </div>' + 
+				'    </div>' +    
+				'</div>';
+
+				var marker = new daum.maps.Marker({
+				    map: map, 
+				    position: latLng
 				});
+				var overlay = new daum.maps.CustomOverlay({
+				    content: content,
+				    map: map,
+				    position: latLng      
+				});
+				var clicked = true;
 				
-				var detailAddr = !!result[0].roadAddress.name ? '<div>'
-						+ result[0].roadAddress.name + '</div>' : '';
-				detailAddr += '<div>' + result[0].jibunAddress.name
-						+ '</div>';
-
-				var content = '<div class="bAddr">'
-						+ '<span class="addrTitle" style="color:red">사고발생 위치</span>' + detailAddr
-						+ '</div>';
-
-				// 마커를 클릭한 위치에 표시합니다 
-				marker.setPosition(latLng);
-				marker.setMap(map);
-
-				// 인포윈도우에 클릭한 위치에 대한 법정동 상세 주소정보를 표시합니다
-				infowindow.setContent(content);
-				infowindow.open(map, marker);
+				(function(marker, overlay, clicked) {
+					// 마커를 클릭했을 때 커스텀 오버레이를 표시합니다
+					daum.maps.event.addListener(marker, 'click', function() {
+						if(clicked) {
+							overlay.setMap(null);
+							clicked = false;
+						}
+						else {
+							overlay.setMap(map);
+							clicked = true;
+						}
+					});
+			    })(marker, overlay, clicked);
 			}
 		});
 	}
@@ -234,15 +293,16 @@
 	<c:forEach var="row" items="${list}" varStatus="status">
 		var lat = ${row.positionLatitude};
 		var lon = ${row.positionLongitude};
-		setMarker(new daum.maps.LatLng(lat, lon));
+		var eventID = ${row.eventID}
+		setMarker(new daum.maps.LatLng(lat, lon), eventID);
 	</c:forEach>
 
-	
+	/*
 	// 중심 좌표나 확대 수준이 변경됐을 때 지도 중심 좌표에 대한 주소 정보를 표시하도록 이벤트를 등록합니다
 	daum.maps.event.addListener(map, 'idle', function() {
 		searchAddrFromCoords(map.getCenter(), function(){});
 	});
-
+	*/
 	function searchAddrFromCoords(coords, callback) {
 		// 좌표로 행정동 주소 정보를 요청합니다
 		geocoder.coord2addr(coords, callback);
@@ -252,6 +312,10 @@
 		// 좌표로 법정동 상세 주소 정보를 요청합니다
 		geocoder.coord2detailaddr(coords, callback);
 	}
+	
+	$('#myModal').on('shown.bs.modal', function () {
+		  $('#myInput').focus()
+	})
 
 </script>
 </html>

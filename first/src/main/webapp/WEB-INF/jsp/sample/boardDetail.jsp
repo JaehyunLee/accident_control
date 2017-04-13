@@ -11,7 +11,7 @@
 			<div class="container">
 				<form>
 					<div class="navbar-header">
-						<a class="navbar-brand" href="#">e-Call 관제 시스템</a>
+						<a class="navbar-brand" href="#">e-Call 관제센터</a>
 					</div>
 					<div id="navbar" class="navbar-collapse collapse">
 						<ul class="nav navbar-nav navbar-right">
@@ -26,7 +26,7 @@
 		</nav>
 		
 		<div class="ecall-controller">
-			<div id="myMap" style="border: 1px solid #BBB; width: 750px; height: 675px; float: left; z-index: 0;"></div>
+			<div id="myMap" style="border: 1px solid #BBB; width: 800px; height: 675px; float: left; z-index: 0;"></div>
 			<div class="ecall-control-list">
 			<h3>관제 상세보기</h3>
 			<table class="board_view">
@@ -186,68 +186,69 @@
 		//comSubmit.submit();
 	}
 	
-	/*
-	// naver map setting
-	var oPoint = new nhn.api.map.LatLng(37.394879, 127.11123799999996);
-	nhn.api.map.setDefaultPoint('LatLng');
-	oMap = new nhn.api.map.Map('myMap', {
-		point : oPoint,
-		zoom : 12,
-		enableWheelZoom : true,
-		enalbeDragPan : true,
-		enableDblClickZoom : false,
-		mapMode : 0,
-		activateTrafficMap : false,
-		activateBicycleMap : false,
-		minMaxLevel : [ 1, 14 ],
-		size : new nhn.api.map.Size(750, 750)
-	});
-	*/
-	
 	// daum map setting
 	var container = document.getElementById('myMap');
 	var lat = ${map.positionLatitude};
 	var lon = ${map.positionLongitude};
+	var options = {
+		center: new daum.maps.LatLng(lat, lon),
+		level: 4
+	};
+	var map = new daum.maps.Map(container, options);	
 	var geocoder = new daum.maps.services.Geocoder();
 
-	var options = {
-			center: new daum.maps.LatLng(lat, lon),
-			level: 4
-		};
-	var map = new daum.maps.Map(container, options);	
-	setMarker(new daum.maps.LatLng(lat, lon));
 
 	function setMarker(latLng) {
 		searchDetailAddrFromCoords(latLng, function(status, result) {
-			if (status === daum.maps.services.Status.OK) {
-				
-				var marker = new daum.maps.Marker(),
-				
-				infowindow = new daum.maps.InfoWindow({
-					zindex : 1
-				});
-				
+			if (status === daum.maps.services.Status.OK) {		
 				var detailAddr = !!result[0].roadAddress.name ? '<div>'
 						+ result[0].roadAddress.name + '</div>' : '';
-				// detailAddr += '<div>지번 주소 : ' + result[0].jibunAddress.name
-				//		+ '</div>';
-
-				var content = '<div class="bAddr">'
-						+ '<span class="addrTitle">사고위치</span>' + detailAddr
+				detailAddr += '<div>' + result[0].jibunAddress.name
 						+ '</div>';
 
-				// 마커를 클릭한 위치에 표시합니다 
-				marker.setPosition(latLng);
-				marker.setMap(map);
+				var content = '<div class="wrap">' + 
+				'    <div class="info">' + 
+				'        <div class="title">' + 
+				'            사고 위치' + 
+				'        </div>' + 
+				'        <div class="body">' + 
+				'            <div class="ellipsis">' +
+								detailAddr +
+				'			</div>' +  
+				'        </div>' + 
+				'    </div>' +    
+				'</div>';
 
-				// 인포윈도우에 클릭한 위치에 대한 법정동 상세 주소정보를 표시합니다
+				var marker = new daum.maps.Marker({
+				    map: map, 
+				    position: latLng
+				});
+				var overlay = new daum.maps.CustomOverlay({
+				    content: content,
+				    map: map,
+				    position: latLng      
+				});
+				var clicked = true;
 				
-				// 오류로 인해 주석처리
-				// infowindow.setContent(content);
-				// infowindow.open(map, marker);
+				(function(marker, overlay, clicked) {
+					// 마커를 클릭했을 때 커스텀 오버레이를 표시합니다
+					daum.maps.event.addListener(marker, 'click', function() {
+						if(clicked) {
+							overlay.setMap(null);
+							clicked = false;
+						}
+						else {
+							overlay.setMap(map);
+							clicked = true;
+						}
+					});
+			    })(marker, overlay, clicked);
 			}
 		});
 	}
+	
+	setMarker(new daum.maps.LatLng(lat, lon));
+
 	
 	function searchDetailAddrFromCoords(coords, callback) {
 		// 좌표로 법정동 상세 주소 정보를 요청합니다
