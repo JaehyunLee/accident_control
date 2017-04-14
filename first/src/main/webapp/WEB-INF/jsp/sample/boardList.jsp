@@ -18,6 +18,7 @@
 							<li><a href="#" id="list_not">미처리 관제</a></li>
 							<li><a href="#" id="list_ing">처리중 관제</a></li>
 							<li><a href="#" id="list_ed">완료된 관제</a></li>
+							<li><a data-toggle="modal" href="#stateModal">관제 현황판</a></li>
 							<li><a href="#" id="statistics">관제 통계</a></li>
 						</ul>
 					</div>
@@ -26,17 +27,19 @@
 		</nav>
 
 		<div class="ecall-controller">
-		<div id="myMap" style="border: 1px solid #BBB; width: 800px; height: 675px; float: left; z-index: 0;"></div>
+		<div id="myMap" style="border: 1px solid #BBB; width: 800px; height: 665px; float: left; z-index: 0;"></div>
 
 		<div class="ecall-control-list">
-			<h4>사고 처리 현황</h4>
+			<div class="ecall-control-title">
+				<h3>사고 처리 현황</h3>
+			</div>
 			<table class="board_list">
 				<colgroup>
-					<col style="width: 19%;"/>
-					<col style="width: 17%;"/>
+					<col style="width: 16%;"/>
+					<col style="width: 16%;"/>
+					<col style="width: 18%;"/>
+					<col style="width: 30%;"/>
 					<col style="width: 20%;"/>
-					<col style="width: 22%;"/>
-					<col style="width: 22%;"/>
 				</colgroup>
 				<thead>
 					<tr>
@@ -65,7 +68,7 @@
 									</c:if></td>
 									<td>${row.timestamp}</td>
 									<td>
-										<button type="button" class="btn" data-toggle="modal" data-target="#myModal">
+										<button type="button" class="btn" data-toggle="modal" data-target="#reportModal">
 											접수하기
 										</button>
 									</td>
@@ -86,62 +89,17 @@
 					jsFunction="fn_search" />
 			</c:if>
 			<input type="hidden" id="currentPageNo" name="currentPageNo" /> <br />
-			<%@ include file="/WEB-INF/include/include-body.jspf"%>
+			
+			<form id="commonForm" name="commonForm"></form>
+		
 		</div>
 		</div>
 	</div>
 
-	<!-- Modal -->
-	<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
-		aria-labelledby="myModalLabel" aria-hidden="true">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal"
-						aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-					<h4 class="modal-title" id="myModalLabel">사고 접수</h4>
-				</div>
-				<div class="modal-body">
-
-					<ul class="list-group">
-						<li class="list-group-item list-group-item-warning"><b>운전자 상태</b></li>
-						<li class="list-group-item">
-							<input type="checkbox" id="checkbox1">							
-							<label for="checkbox1">의식 여부</label>
-						</li>
-						<li class="list-group-item">
-							<input type="checkbox" id="checkbox2">							
-							<label for="checkbox2">심정지 여부</label>
-						</li>
-						<li class="list-group-item">
-							<input type="checkbox" id="checkbox3">							
-							<label for="checkbox3">화상 여부</label>
-						</li>
-						<li class="list-group-item">
-							<input type="checkbox" id="checkbox4">							
-							<label for="checkbox4">호흡곤란 여부</label>
-						</li>
-						<li class="list-group-item">
-							<input type="checkbox" id="checkbox5">							
-							<label for="checkbox5">관통상 여부</label>
-						</li>
-						<li class="list-group-item">
-							<input type="checkbox" id="checkbox6">							
-							<label for="checkbox6">발작 여부</label>
-						</li>
-					</ul>
-					
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn" data-dismiss="modal">취소</button>
-					<button type="button" class="btn">저장하기</button>
-				</div>
-			</div>
-		</div>
-	</div>
-
+	<!-- reportModal -->
+	<%@ include file="/WEB-INF/include/include-reportModal.jsp"%>	
+	<!-- stateModal -->
+	<%@ include file="/WEB-INF/include/include-stateModal.jsp"%>
 </body>
 
 <script type="text/javascript">
@@ -255,9 +213,9 @@
 				'        <div class="body">' + 
 				'            <div class="ellipsis">' +
 								detailAddr +
-				' 			 	<br>관제번호&nbsp;' +
+				' 			 	<br><b>관제번호&nbsp;' +
 								eventID +
-				'			</div>' +  
+				'			</b></div>' +  
 				'        </div>' + 
 				'    </div>' +    
 				'</div>';
@@ -297,12 +255,6 @@
 		setMarker(new daum.maps.LatLng(lat, lon), eventID);
 	</c:forEach>
 
-	/*
-	// 중심 좌표나 확대 수준이 변경됐을 때 지도 중심 좌표에 대한 주소 정보를 표시하도록 이벤트를 등록합니다
-	daum.maps.event.addListener(map, 'idle', function() {
-		searchAddrFromCoords(map.getCenter(), function(){});
-	});
-	*/
 	function searchAddrFromCoords(coords, callback) {
 		// 좌표로 행정동 주소 정보를 요청합니다
 		geocoder.coord2addr(coords, callback);
@@ -316,6 +268,5 @@
 	$('#myModal').on('shown.bs.modal', function () {
 		  $('#myInput').focus()
 	})
-
 </script>
 </html>

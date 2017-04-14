@@ -18,6 +18,7 @@
 							<li><a href="#" id="list_not">미처리 관제</a></li>
 							<li><a href="#" id="list_ing">처리중 관제</a></li>
 							<li><a href="#" id="list_ed">완료된 관제</a></li>
+							<li><a data-toggle="modal" href="#stateModal">관제 현황판</a></li>
 							<li><a href="#" id="statistics">관제 통계</a></li>
 						</ul>
 					</div>
@@ -102,10 +103,12 @@
 			<a href="#this" class="btn" id="list">목록으로</a>
 			<a href="#this" class="btn" id="update">수정하기</a>
 			
-			<%@ include file="/WEB-INF/include/include-body.jspf"%>
+			<form id="commonForm" name="commonForm"></form>
 		</div>
 		</div>
 	</div>
+	<!-- stateModal -->
+	<%@ include file="/WEB-INF/include/include-stateModal.jsp"%>
 </body>
 
 <script type="text/javascript">

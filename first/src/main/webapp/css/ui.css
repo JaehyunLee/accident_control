@@ -1,29 +1,37 @@
 @CHARSET "UTF-8";
 
-a:link, a:visited {text-decoration: none; color: #656565;}
-
-.board_list {width:100%;border-top:2px solid #ccc;border-bottom:1px solid #ccc}
-.board_list thead th:first-child{background-image:none;}
-.board_list thead th {border-bottom:1px solid #ccc;padding:12px 0 13px 25px;color:#3b3a3a;vertical-align:middle}
-.board_list tbody td {border-top:1px solid #ccc;padding:10px 0;text-align:center;vertical-align:middle}
-.board_list tbody tr:first-child td {border:none}
-.board_list tbody td.title {text-align:left; padding-left:20px}
-.board_list tbody td a {display:inline-block}
-
-.board_view {width:100%;border-top:2px solid #ccc;}
-.board_view tbody th {text-align:left;background:#f7f7f7;color:#3b3a3a}
-.board_view tbody th, .board_view tbody td {padding:15px 0 16px 16px;border-bottom:1px solid #ccc}
-
+/* 공통 디자인 */
+a:link, a:visited {text-decoration: none; color: #aaaaaa;}
 .wdp_90 {width:90%}
-.btn {border-radius:3px;padding:5px 11px;color:#fff !important; display:inline-block; background-color:#6b9ab8; border:1px solid #56819d; vertical-align:middle}
+.btn {color:#fff !important; display:inline-block; background-color:#6b9ab8; vertical-align:middle;}
 
 .ecall-container {width: 1200px; margin:0 auto;}
-.ecall-controller {width: 1200px; margin-top:55px;}
-
+.ecall-controller {width: 1200px; margin-top:60px;}
+.ecall-control-list {border: 1px solid #ccc; width:395px; float:left;  text-align:center; background:#fafafa; color:#999}
 .toptext {position:relative; top:35%;  color:#FFFFFF;}
-.ecall-control-list {border: 1px solid #ccc; width:395px; float:left;  text-align:center;}
 
-.container_chart {float:left; text-align:center; margin-top:55px;}
+/* 관제 테이블 디자인 */
+.board_list {width:100%;border-top:2px solid #eee;border-bottom:1px solid #eee }
+.board_list thead th:first-child{background-image:none;}
+.board_list thead th {border-bottom:0px; border-top:0px; padding:10px 0 10px 0;font-weight:bold; vertical-align:middle; text-align:center; color:#fff; background:#aaaaaa;}
+.board_list tbody td {border-top:1px solid #eee;padding:1px 1px;text-align:center;vertical-align:middle; color:#aaaaaa; background:#fafafa}
+.board_list tbody tr:first-child td {border:none}
+.board_list tbody td a {display:inline-block}
+
+/* 상세보기 테이블 디자인 */
+.board_view {width:100%;border-top:2px solid #eee;}
+.board_view tbody th {text-align:left;background:#f7f7f7;color:#3b3a3a}
+.board_view tbody th, .board_view tbody td {padding:15px 0 16px 16px;border-bottom:1px solid #eee}
+
+/* 현황판 테이블 디자인 */
+.state-table-head {font-weight:bold; font-size: 20px; vertical-align:middle; text-align:center; color:#777777; padding:15px 15px;}
+.state-table-body {width:100%; border-top:2px solid #eee;border-bottom:1px solid #eee;}
+.state-table-body th {border-bottom:0px; border-top:0px; padding:20px 0 20px 0;font-weight:bold; font-size: 20px; vertical-align:middle; text-align:center; color:#fff; background:#bbbbbb;}
+.state-table-body td {border-top:1px solid #eee;padding:20px 20px;text-align:center;vertical-align:middle; color:#777777; background:#fafafa; font-size: 20px; font-weight:bold;}
+
+
+/* 차트 디자인 */
+.container_chart {float:left; text-align:center; margin-top:60px;}
 .div_chart1 {float:left; text-align:center; border: 1px solid #ddd;}
 .div_chart2 {float:left; text-align:center; border: 1px solid #ddd;}
 .div_chart3 {float:left; text-align:center; border: 1px solid #ddd;}

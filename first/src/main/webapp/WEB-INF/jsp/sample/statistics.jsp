@@ -19,6 +19,7 @@
 							<li><a href="#" id="list_not">미처리 관제</a></li>
 							<li><a href="#" id="list_ing">처리중 관제</a></li>
 							<li><a href="#" id="list_ed">완료된 관제</a></li>
+							<li><a data-toggle="modal" href="#stateModal">관제 현황판</a></li>
 							<li><a href="#" id="statistics">관제 통계</a></li>
 						</ul>
 					</div>
@@ -29,23 +30,26 @@
 		<div class="container_chart">
 			<div class="div_chart1">
 				<h3>사고 단말기 현황</h3>
-				<div id="chart1" style="width: 598px; height: 280px;"></div>
+				<div id="chart1" style="width: 598px; height: 275px;"></div>
 			</div>
 			<div class="div_chart2">
 				<h3>날짜별 사고 횟수 분포</h3>
-				<div id="chart2" style="width: 598px; height: 280px;"></div>
+				<div id="chart2" style="width: 598px; height: 275px;"></div>
 			</div>
 			<div class="div_chart3">
 				<h3>사고 담당자 현황</h3>
-				<div id="chart3" style="width: 598px; height: 280px;"></div>
+				<div id="chart3" style="width: 598px; height: 275px;"></div>
 			</div>
 			<div class="div_chart4">
 				<h3>사고 차종 현황</h3>
-				<div id="chart4" style="width: 598px; height: 280px;"></div>
+				<div id="chart4" style="width: 598px; height: 275px;"></div>
 			</div>
 		</div>
 	</div>
-	<%@ include file="/WEB-INF/include/include-body.jspf"%>
+	<form id="commonForm" name="commonForm"></form>
+	
+	<!-- stateModal -->
+	<%@ include file="/WEB-INF/include/include-stateModal.jsp"%>
 </body>
 
 <script type="text/javascript">
