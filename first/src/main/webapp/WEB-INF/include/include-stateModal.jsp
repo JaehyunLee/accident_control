@@ -12,7 +12,18 @@
 				<h4 class="modal-title" id="myModalLabel">관제 현황판</h4>
 			</div>
 			<div class="modal-body">
-			
+
+				<div class="state-clock">
+					<div id="state-Date"></div>
+					<ul>
+						<li id="state-hours"></li>
+						<li id="state-point">:</li>
+						<li id="state-min"></li>
+						<li id="state-point">:</li>
+						<li id="state-sec"></li>
+					</ul>
+				</div>
+
 				<div class="state-table-head">콜 현황</div>
 			
 				<table class="state-table-body">
@@ -70,3 +81,37 @@
 		</div>
 	</div>
 </div>
+
+<!-- 시계화면 스크립트 -->
+<script type="text/javascript">
+	$(document).ready(
+			function() {
+				var dayNames = [ "일요일", "월요일", "화요일", "수요일",
+						"목요일", "금요일", "토요일" ]
+				var newDate = new Date();
+				newDate.setDate(newDate.getDate());
+				$('#state-Date').html(newDate.getFullYear() + '년 ' + (newDate.getMonth()+1)
+				+ '월 ' + newDate.getDate()+ '일 ' +dayNames[newDate.getDay()]);
+
+				setInterval(function() {
+					// Create a newDate() object and extract the seconds of the current time on the visitor's
+					var seconds = new Date().getSeconds();
+					// Add a leading zero to seconds value
+					$("#state-sec").html((seconds < 10 ? "0" : "") + seconds);
+				}, 1000);
+
+				setInterval(function() {
+					// Create a newDate() object and extract the minutes of the current time on the visitor's
+					var minutes = new Date().getMinutes();
+					// Add a leading zero to the minutes value
+					$("#state-min").html((minutes < 10 ? "0" : "") + minutes);
+				}, 1000);
+
+				setInterval(function() {
+					// Create a newDate() object and extract the hours of the current time on the visitor's
+					var hours = new Date().getHours();
+					// Add a leading zero to the hours value
+					$("#state-hours").html((hours < 10 ? "0" : "") + hours);
+				}, 1000);
+			});
+</script>

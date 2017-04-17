@@ -29,6 +29,48 @@ a:link, a:visited {text-decoration: none; color: #aaaaaa;}
 .state-table-body th {border-bottom:0px; border-top:0px; padding:20px 0 20px 0;font-weight:bold; font-size: 20px; vertical-align:middle; text-align:center; color:#fff; background:#bbbbbb;}
 .state-table-body td {border-top:1px solid #eee;padding:20px 20px;text-align:center;vertical-align:middle; color:#777777; background:#fafafa; font-size: 20px; font-weight:bold;}
 
+/* 현황판 시계 디자인 */
+
+.state-clock {
+    width: 800px;
+    margin: 0 auto;
+    color: #666;
+}
+#state-Date {
+    font-size: 23px;
+    text-align: center;
+}
+.state-clock ul {
+    width: 800px;
+    margin: 0 auto;
+    padding: 0px;
+    list-style: none;
+    text-align: center;
+}
+.state-clock ul li {
+    display: inline;
+    font-size: 90px;
+    text-align: center;
+}
+#state-point {
+    position: relative;
+    -moz-animation: mymove 1s ease infinite;
+    -webkit-animation: mymove 1s ease infinite;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+@-webkit-keyframes mymove {
+    0% { opacity: 1.0; }
+	50% { opacity: 0; }
+	100% { opacity: 1.0;}	
+}
+@-moz-keyframes mymove {
+    0% { opacity: 1.0; }
+    50% { opacity: 0; }
+    100% { opacity: 1.0; };
+}
+
 
 /* 차트 디자인 */
 .container_chart {float:left; text-align:center; margin-top:60px;}
@@ -36,6 +78,9 @@ a:link, a:visited {text-decoration: none; color: #aaaaaa;}
 .div_chart2 {float:left; text-align:center; border: 1px solid #ddd;}
 .div_chart3 {float:left; text-align:center; border: 1px solid #ddd;}
 .div_chart4 {float:left; text-align:center; border: 1px solid #ddd;}
+
+
+
 
 /* 체크박스 디자인 */
 input[type="checkbox"] {  /* 실제 체크박스는 화면에서 숨김 */

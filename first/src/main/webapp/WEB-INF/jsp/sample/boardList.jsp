@@ -27,7 +27,7 @@
 		</nav>
 
 		<div class="ecall-controller">
-		<div id="myMap" style="border: 1px solid #BBB; width: 800px; height: 665px; float: left; z-index: 0;"></div>
+		<div id="myMap" style="border: 1px solid #BBB; width: 800px; height: 630px; float: left; z-index: 0;"></div>
 
 		<div class="ecall-control-list">
 			<div class="ecall-control-title">
