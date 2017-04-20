@@ -15,11 +15,10 @@
 					</div>
 					<div id="navbar" class="navbar-collapse collapse">
 						<ul class="nav navbar-nav navbar-right">
-							<li><a href="#" id="list_not">미처리 관제</a></li>
-							<li><a href="#" id="list_ing">처리중 관제</a></li>
-							<li><a href="#" id="list_ed">완료된 관제</a></li>
+							<li><a href="#" id="list_not">사고 처리 현황</a></li>
 							<li><a data-toggle="modal" href="#stateModal">관제 현황판</a></li>
 							<li><a href="#" id="statistics">관제 통계</a></li>
+							<li><a href="#" id="logout">로그아웃</a></li>
 						</ul>
 					</div>
 				</form>
@@ -142,6 +141,10 @@
 			e.preventDefault();
 			fn_openStatistics();
 		});
+		$("#logout").on("click", function(e) { // 로그아웃 버튼
+			e.preventDefault();
+			fn_openLogout();
+		});
 	});
 
 	function fn_openBoardList() {
@@ -178,6 +181,12 @@
 	function fn_openStatistics() {
 		var comSubmit = new ComSubmit();
 		comSubmit.setUrl("<c:url value='/sample/openStatistics.do' />");
+		comSubmit.submit();
+	}
+	
+	function fn_openLogout() {
+		var comSubmit = new ComSubmit();
+		comSubmit.setUrl("<c:url value='../index.jsp' />");
 		comSubmit.submit();
 	}
 	

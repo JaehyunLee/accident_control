@@ -16,35 +16,52 @@
 					</div>
 					<div id="navbar" class="navbar-collapse collapse">
 						<ul class="nav navbar-nav navbar-right">
-							<li><a href="#" id="list_not">미처리 관제</a></li>
-							<li><a href="#" id="list_ing">처리중 관제</a></li>
-							<li><a href="#" id="list_ed">완료된 관제</a></li>
+							<li><a href="#" id="list_not">사고 처리 현황</a></li>
 							<li><a data-toggle="modal" href="#stateModal">관제 현황판</a></li>
 							<li><a href="#" id="statistics">관제 통계</a></li>
+							<li><a href="#" id="logout">로그아웃</a></li>
 						</ul>
 					</div>
 				</form>
 			</div>
 		</nav>
-
+		
+		<div class="container_frame">
+			<iFrame src="http://localhost:8081/#/notebook/2CBYAD81F/" width="100%" height="800px"></iFrame>
+		</div>
+<!-- 
 		<div class="container_chart">
 			<div class="div_chart1">
-				<h3>사고 단말기 현황</h3>
-				<div id="chart1" style="width: 598px; height: 275px;"></div>
+				<h4>지역별 사고 현황</h4>
+				<div id="chart-frame1" style="width: 598px; height: 285px;">
+					<iFrame src="http://localhost:8081/#/notebook/2CBYAD81F/paragraph/20170328-111535_2061037205?asIframe" 
+					width="90%" height="100%"></iFrame>
+				</div>
 			</div>
 			<div class="div_chart2">
-				<h3>날짜별 사고 횟수 분포</h3>
-				<div id="chart2" style="width: 598px; height: 275px;"></div>
+				<h4>차종별 사고 현황</h4>
+				<div id="chart-frame2" style="width: 598px; height: 285px;">
+					<iFrame src="http://localhost:8081/#/notebook/2CBYAD81F/paragraph/20170328-111356_749395341?asIframe" 
+					width="90%" height="100%"></iFrame>
+				</div>
 			</div>
 			<div class="div_chart3">
-				<h3>사고 담당자 현황</h3>
-				<div id="chart3" style="width: 598px; height: 275px;"></div>
+				<h4>월별 사고 현황</h4>
+				<div id="chart-frame3" style="width: 598px; height: 285px;">
+					<iFrame src="http://localhost:8081/#/notebook/2CBYAD81F/paragraph/20170328-111647_1200821727?asIframe" 
+					width="90%" height="100%"></iFrame>
+				</div>
 			</div>
+			
 			<div class="div_chart4">
-				<h3>사고 차종 현황</h3>
-				<div id="chart4" style="width: 598px; height: 275px;"></div>
+				<h4>연도별 사고 현황</h4>
+				<div id="chart-frame4" style="width: 598px; height: 285px;">
+				<iFrame src="http://localhost:8081/#/notebook/2CBYAD81F/paragraph/20170328-111520_424722085?asIframe" 
+					width="90%" height="100%"></iFrame>
+				</div> 
 			</div>
 		</div>
+		 -->
 	</div>
 	<form id="commonForm" name="commonForm"></form>
 	
@@ -73,6 +90,10 @@
 			e.preventDefault();
 			fn_openStatistics();
 		});
+		$("#logout").on("click", function(e) { // 로그아웃 버튼
+			e.preventDefault();
+			fn_openLogout();
+		});
 	});
 	
 	function fn_openBoardListNot() {
@@ -96,6 +117,12 @@
 	function fn_openStatistics() {
 		var comSubmit = new ComSubmit();
 		comSubmit.setUrl("<c:url value='/sample/openStatistics.do' />");
+		comSubmit.submit();
+	}
+	
+	function fn_openLogout() {
+		var comSubmit = new ComSubmit();
+		comSubmit.setUrl("<c:url value='../index.jsp' />");
 		comSubmit.submit();
 	}
 </script>

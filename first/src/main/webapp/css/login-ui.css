@@ -1,0 +1,76 @@
+@CHARSET "UTF-8";
+
+/* 공통 디자인 
+a:link, a:visited {text-decoration: none; color: #aaaaaa;}
+.wdp_90 {width:90%}
+.btn {color:#fff !important; display:inline-block; background-color:#6b9ab8; vertical-align:middle;}
+
+.ecall-container {width: 1200px; margin:0 auto;}
+.ecall-controller {width: 1200px; margin-top:60px;}
+.ecall-control-list {border: 1px solid #ccc; width:395px; float:left;  text-align:center; background:#fafafa; color:#999}
+.toptext {position:relative; top:35%;  color:#FFFFFF;}
+*/
+
+body {
+  padding-top: 40px;
+  padding-bottom: 40px;
+  background-color: #eee;
+  font-family: nanumgothic, '돋움', Dotum, AppleGothic, Arial, sans-serif;
+}
+
+.form-signin {
+  max-width: 330px;
+  padding: 15px;
+  margin: 0 auto;
+}
+
+.form-signin-heading {
+	color: #333;
+	text-align:center;
+	padding-bottom: 20px;
+	font-weight:bold;
+}
+
+.form-signin .form-signin-heading,
+.form-signin .checkbox {
+  margin-bottom: 10px;
+}
+.form-signin .checkbox {
+  font-weight: normal;
+  color: #333;
+}
+.form-signin .form-control {
+  position: relative;
+  height: auto;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 10px;
+  font-size: 16px;
+}
+.form-signin .form-control:focus {
+  z-index: 2;
+}
+.form-signin input[type="email"] {
+  margin-bottom: -1px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.form-signin input[type="password"] {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+.form-password {
+	text-align:center;
+	padding-top:30px;
+}
+.btn-password {
+	color:#333 !important;
+	display:inline-block;
+	background-color:#eee;
+	vertical-align:middle;
+	border:1px solid #ccc;
+	padding:5px 30px 5px 30px;
+	
+}
