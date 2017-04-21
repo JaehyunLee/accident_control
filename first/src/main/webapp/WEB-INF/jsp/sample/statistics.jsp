@@ -26,9 +26,9 @@
 			</div>
 		</nav>
 		
-		<div class="container_frame">
-			<iFrame src="http://localhost:8081/#/notebook/2CBYAD81F/" width="100%" height="800px"></iFrame>
-		</div>
+		<p class="container_frame">
+			<iFrame src="http://localhost:8081/#/notebook/2CBYAD81F/" width="100%" height="1000px"></iFrame>
+		</p>
 <!-- 
 		<div class="container_chart">
 			<div class="div_chart1">
