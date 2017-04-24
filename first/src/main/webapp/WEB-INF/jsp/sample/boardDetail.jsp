@@ -207,6 +207,13 @@
 		level: 4
 	};
 	var map = new daum.maps.Map(container, options);	
+	
+	var mapTypeControl = new daum.maps.MapTypeControl();
+	map.addControl(mapTypeControl, daum.maps.ControlPosition.TOPRIGHT);
+	
+	var zoomControl = new daum.maps.ZoomControl();
+	map.addControl(zoomControl, daum.maps.ControlPosition.RIGHT);
+	
 	var geocoder = new daum.maps.services.Geocoder();
 
 

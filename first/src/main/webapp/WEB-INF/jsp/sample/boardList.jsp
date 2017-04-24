@@ -206,6 +206,13 @@
 	};
 	var map = new daum.maps.Map(container, options);
 	
+	// 지도타입 컨트롤러
+	var mapTypeControl = new daum.maps.MapTypeControl();
+	map.addControl(mapTypeControl, daum.maps.ControlPosition.TOPRIGHT);
+	// 줌인 컨트롤러
+	var zoomControl = new daum.maps.ZoomControl();
+	map.addControl(zoomControl, daum.maps.ControlPosition.RIGHT);
+		
 	var geocoder = new daum.maps.services.Geocoder();
 	
 	function setMarker(latLng, eventID) {
@@ -233,7 +240,8 @@
 				var marker = new daum.maps.Marker({
 				    map: map, 
 				    position: latLng
-				});
+				});							
+								
 				var overlay = new daum.maps.CustomOverlay({
 				    content: content,
 				    map: map,
