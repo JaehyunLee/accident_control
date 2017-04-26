@@ -102,6 +102,7 @@
 </body>
 
 <script type="text/javascript">
+
 	$(document).ready(function() {
 		$("#write").on("click", function(e) { //글쓰기 버튼(메시지전송버튼)
 			e.preventDefault();
@@ -212,12 +213,21 @@
 	// 줌인 컨트롤러
 	var zoomControl = new daum.maps.ZoomControl();
 	map.addControl(zoomControl, daum.maps.ControlPosition.RIGHT);
-		
+	// 실시간 교통
+	map.addOverlayMapTypeId(daum.maps.MapTypeId.TRAFFIC);
+	// 주소정보
 	var geocoder = new daum.maps.services.Geocoder();
+	// 마커 클러스터링
+	var clusterer = new daum.maps.MarkerClusterer({
+		map: map,
+		averageCenter: true,
+		minLevel:6
+	});
 	
 	function setMarker(latLng, eventID) {
 		searchDetailAddrFromCoords(latLng, function(status, result) {
 			if (status === daum.maps.services.Status.OK) {		
+
 				var detailAddr = !!result[0].roadAddress.name ? 
 						result[0].roadAddress.name : '';
 				detailAddr += result[0].jibunAddress.name;
@@ -238,7 +248,6 @@
 				'</div>';
 
 				var marker = new daum.maps.Marker({
-				    map: map, 
 				    position: latLng
 				});							
 								
@@ -247,7 +256,9 @@
 				    map: map,
 				    position: latLng      
 				});
-				var clicked = true;
+				
+				var clicked = false;
+				overlay.setMap(null);
 				
 				(function(marker, overlay, clicked) {
 					// 마커를 클릭했을 때 커스텀 오버레이를 표시합니다
@@ -262,15 +273,18 @@
 						}
 					});
 			    })(marker, overlay, clicked);
+				
+				clusterer.addMarker(marker);
 			}
 		});
 	}
-	
+
 	<c:forEach var="row" items="${list}" varStatus="status">
 		var lat = ${row.positionLatitude};
 		var lon = ${row.positionLongitude};
 		var eventID = ${row.eventID}
 		setMarker(new daum.maps.LatLng(lat, lon), eventID);
+		
 	</c:forEach>
 
 	function searchAddrFromCoords(coords, callback) {

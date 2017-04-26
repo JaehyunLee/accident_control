@@ -23,7 +23,7 @@
 
 <!-- Map API -->
 <script type="text/javascript" src="http://openapi.map.naver.com/openapi/v2/maps.js?clientId=QRvBZKcm6HKVtLbTGm1Y"></script>
-<script type="text/javascript" src="//apis.daum.net/maps/maps3.js?apikey=a22e2d3564a4738fc448943a57212135&libraries=services"></script>
+<script type="text/javascript" src="//apis.daum.net/maps/maps3.js?apikey=a22e2d3564a4738fc448943a57212135&libraries=services,clusterer"></script>
 
 <!-- Map Style -->
 <style>
