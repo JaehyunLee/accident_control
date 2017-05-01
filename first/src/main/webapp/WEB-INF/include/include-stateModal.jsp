@@ -9,7 +9,7 @@
 					aria-label="Close">
 					<span aria-hidden="true">&times;</span>
 				</button>
-				<h4 class="modal-title" id="myModalLabel">관제 현황판</h4>
+				<h4 class="modal-title" id="myModalLabel">e-Call 종합 관제 현황</h4>
 			</div>
 			<div class="modal-body">
 
@@ -24,34 +24,37 @@
 					</ul>
 				</div>
 
-				<div class="state-table-head">콜 현황</div>
+				<div class="state-table-head">e-Call 처리 현황</div>
 			
 				<table class="state-table-body">
 					<colgroup>
-						<col style="width: 25%;" />
-						<col style="width: 25%;" />
-						<col style="width: 25%;" />
-						<col style="width: 25%;" />
+						<col style="width: 20%;" />
+						<col style="width: 20%;" />
+						<col style="width: 20%;" />
+						<col style="width: 20%;" />
+						<col style="width: 20%;" />
 					</colgroup>
 					<thead>
 						<tr>
-							<th scope="col"></th>
-							<th scope="col">미처리</th>
+							<th scope="col">전체 수신콜</th>
+							<th scope="col">처리중</th>
 							<th scope="col">처리완료</th>
-							<th scope="col">전체콜</th>
+							<th scope="col">미처리</th>
+							<th scope="col">완료율</th>
 						</tr>
 					</thead>					
 					<tbody>
 						<tr>
-							<td>금일</td>
+							<td>총 10건</td>
+							<td>5</td>
+							<td>3</td>
 							<td>2</td>
-							<td>21</td>
-							<td>23</td>
+							<td>80%</td>
 						</tr>
 					</tbody>
 				</table>
 				
-				<div class="state-table-head">상담원 현황</div>
+				<div class="state-table-head">운영요원 상담 현황</div>
 				
 				<table class="state-table-body">
 					<colgroup>
@@ -62,18 +65,18 @@
 					</colgroup>
 					<thead>
 						<tr>
-							<th scope="col"></th>
-							<th scope="col">대기중</th>
+							<th scope="col">투입 운영요원</th>
 							<th scope="col">상담중</th>
+							<th scope="col">대기중</th>
 							<th scope="col">휴식중</th>
 						</tr>
 					</thead>					
 					<tbody>
 						<tr>
-							<td>현재</td>
-							<td>14</td>
-							<td>4</td>
-							<td>2</td>
+							<td>총 5명</td>
+							<td>3</td>
+							<td>1</td>
+							<td>1</td>
 						</tr>
 					</tbody>
 				</table>

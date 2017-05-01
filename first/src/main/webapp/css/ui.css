@@ -2,13 +2,10 @@
 
 /* 공통 디자인 */
 a:link, a:visited {text-decoration: none; color: #666;}
-.wdp_90 {width:90%}
 .btn {color:#fff !important; display:inline-block; background-color:#6b9ab8; vertical-align:middle;}
-
 .ecall-container {width: 1200px; margin:0 auto;}
-.ecall-controller {width: 1200px; margin-top:60px;}
-.ecall-control-list {border: 1px solid #ccc; width:395px; float:left;  text-align:center; background:#fafafa; color:#666}
-.toptext {position:relative; top:35%;  color:#FFFFFF;}
+.ecall-controller {width: 100%; margin-top:60px;}
+.ecall-control-list {border: 1px solid #ccc; width:395px; float:left;   background:#fafafa; color:#666}
 
 /* 관제 테이블 디자인 */
 .board_list {width:100%;border-top:2px solid #eee;border-bottom:1px solid #eee }
@@ -19,9 +16,13 @@ a:link, a:visited {text-decoration: none; color: #666;}
 .board_list tbody td a {display:inline-block}
 
 /* 상세보기 테이블 디자인 */
-.board_view {width:100%;border-top:2px solid #eee;}
-.board_view tbody th {text-align:left;background:#f7f7f7;color:#3b3a3a}
+.board_view { width:100%; }
+.board_view tbody th { text-align:left;background:#f7f7f7;color:#3b3a3a }
 .board_view tbody th, .board_view tbody td {padding:15px 0 16px 16px;border-bottom:1px solid #eee}
+.tab-content { padding: 15px; }
+.reporting-title { color:#fff; background:#aaaaaa; text-align:center; padding: 3px;}
+.reporting-footer { text-align:center; }
+
 
 /* 현황판 테이블 디자인 */
 .state-table-head {font-weight:bold; font-size: 20px; vertical-align:middle; text-align:center; color:#777777; padding:15px 15px;}
@@ -30,7 +31,6 @@ a:link, a:visited {text-decoration: none; color: #666;}
 .state-table-body td {border-top:1px solid #eee;padding:20px 20px;text-align:center;vertical-align:middle; color:#777777; background:#fafafa; font-size: 20px; font-weight:bold;}
 
 /* 현황판 시계 디자인 */
-
 .state-clock {
     width: 800px;
     margin: 0 auto;

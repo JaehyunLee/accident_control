@@ -9,9 +9,6 @@
 <%@ taglib prefix="ui" uri="http://egovframework.gov/ctl/ui" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
-<link rel="stylesheet" type="text/css" href="<c:url value='/css/ui.css?ver=1'/>" />
-
-
 <!-- jQuery -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <script src="<c:url value='/js/common.js'/>" charset="utf-8"></script>
@@ -20,6 +17,10 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.js"></script>
+
+<!-- SideMenu CSS -->
+<link rel="stylesheet" type="text/css" href="<c:url value='/css/BootSideMenu.css'/>" />
+<script src="<c:url value='/js/BootSideMenu.js'/>" charset="utf-8"></script>
 
 <!-- Map API -->
 <script type="text/javascript" src="http://openapi.map.naver.com/openapi/v2/maps.js?clientId=QRvBZKcm6HKVtLbTGm1Y"></script>
@@ -34,3 +35,5 @@
     .info .body {position: relative; overflow: hidden; margin: 10px 0 0 10px;}
     .info:after {content: '';position: absolute;margin-left: -12px;left: 50%;bottom: 0;width: 22px;height: 12px;background: url('http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/vertex_white.png')}
 </style>
+
+<link rel="stylesheet" type="text/css" href="<c:url value='/css/ui.css?ver=5'/>" />

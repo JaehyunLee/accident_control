@@ -26,9 +26,8 @@
 		</nav>
 		
 		<div class="ecall-controller">
-			<div id="myMap" style="border: 1px solid #BBB; width: 800px; height: 675px; float: left; z-index: 0;"></div>
 			<div class="ecall-control-list">
-			<h3>관제 상세보기</h3>
+			<div class="reporting-title"><h4>e-Call 사고 접수</h4></div>
 			<table class="board_view">
 				<colgroup>
 					<col width="25%" />
@@ -99,11 +98,152 @@
 				</tbody>
 			</table>
 
-			<a href="#this" class="btn" id="list">목록으로</a>
-			<a href="#this" class="btn" id="update">수정하기</a>
+			<div class="reporting-title">
+				<h4>상담 내용 기록</h4>
+			</div>
 			
+			<div role="tabpanel">
+	  			<!-- Nav tabs -->
+  				<ul class="nav nav-tabs" role="tablist">
+    			<li role="presentation" class="active">
+    				<a href="#tabpanel-common" aria-controls="tabpanel-common" role="tab" data-toggle="tab">공통 상황</a>
+    			</li>
+    			<li role="presentation">
+    				<a href="#tabpanel-driver" aria-controls="tabpanel-driver" role="tab" data-toggle="tab">운전자 상태</a>
+    			</li>
+	    		<li role="presentation">
+	    			<a href="#tabpanel-vehicle" aria-controls="tabpanel-vehicle" role="tab" data-toggle="tab">차량 상태</a>
+	    		</li>
+    			<li role="presentation">
+    				<a href="#tabpanel-message" aria-controls="tabpanel-message" role="tab" data-toggle="tab">상담 메모</a>
+    			</li>
+  				</ul>
+
+  				<!-- Tab panes -->
+	  			<div class="tab-content">
+    			<div role="tabpanel" class="tab-pane active" id="tabpanel-common">
+    				<table class="layout-table">
+    					<tr>
+    						<td>
+    							<div class="checkbox">
+									<input type="checkbox" id="checkbox-1">							
+									<label for="remember-me">희생자 여부</label>
+								</div>
+    						</td>
+    						<td>
+    							<div class="checkbox">
+									<input type="checkbox" id="checkbox-2">							
+									<label for="remember-me">주변 교통 통제 여부</label>
+								</div>
+    						</td>
+    					</tr>
+    					<tr>
+    						<td>
+    							<div class="checkbox">
+									<input type="checkbox" id="checkbox-3">							
+									<label for="remember-me">주변 화재 및 연기 여부</label>
+								</div>
+    						</td>
+    						<td>
+    							<div class="checkbox">
+									<input type="checkbox" id="checkbox-4">							
+									<label for="remember-me">위험물질 및 냄새 여부</label>
+								</div>
+    						</td>
+    					</tr>
+    					<tr>
+    						<td>
+    							<div class="checkbox">
+									<input type="checkbox" id="checkbox-5">							
+									<label for="remember-me">주변 전선이 늘어짐 여부</label>
+								</div>
+    						</td>
+    					</tr>
+    				</table>
+							
+    			</div>
+    			<div role="tabpanel" class="tab-pane" id="tabpanel-driver">
+    				<table class="layout-table">
+	    				<tr>
+    						<td>
+    							<div class="checkbox">
+									<input type="checkbox" id="checkbox-6">							
+									<label for="remember-me">의식 여부</label>
+								</div>
+    						</td>
+    						<td>
+    							<div class="checkbox">
+									<input type="checkbox" id="checkbox-7">							
+									<label for="remember-me">심정지 여부</label>
+								</div>
+    						</td>
+    					</tr>
+    					<tr>
+    						<td>
+    							<div class="checkbox">
+									<input type="checkbox" id="checkbox-8">							
+									<label for="remember-me">화상 여부</label>
+								</div>
+    						</td>
+    						<td>
+    							<div class="checkbox">
+									<input type="checkbox" id="checkbox-9">							
+									<label for="remember-me">호흡 곤란 여부</label>
+								</div>
+    						</td>
+	    				</tr>
+    					<tr>
+    						<td>
+    							<div class="checkbox">
+									<input type="checkbox" id="checkbox-10">							
+									<label for="remember-me">관통상 여부</label>
+								</div>
+    						</td>
+    						<td>
+    							<div class="checkbox">
+									<input type="checkbox" id="checkbox-11">							
+									<label for="remember-me">발작 여부</label>
+								</div>
+    						</td>
+    					</tr>
+    					<tr>
+	    					<td>
+	    						<div class="checkbox">
+									<input type="checkbox" id="checkbox-12">							
+									<label for="remember-me">안전벨트 착용 여부</label>
+								</div>
+	    					</td>
+    					</tr>
+    				</table>				
+					
+    			</div>
+    			<div role="tabpanel" class="tab-pane" id="tabpanel-vehicle">
+    				<div class="checkbox">
+						<input type="checkbox" id="checkbox-13">							
+						<label for="remember-me">유리 파손 여부</label>
+					</div>
+					<div class="checkbox">
+						<input type="checkbox" id="checkbox-14">							
+						<label for="remember-me">에어백 전개 여부</label>
+					</div>
+					<div class="checkbox">
+						<input type="checkbox" id="checkbox-15">							
+						<label for="remember-me">차량 전복 여부</label>
+					</div>
+    			</div>
+	    		<div role="tabpanel" class="tab-pane" id="tabpanel-message">
+	    			<h4>차량 사고 접수 완료</h4>
+	    		</div>
+  				</div>
+			</div>
+			
+			<div class="reporting-footer">	
+				<a href="#this" class="btn" id="list">사고 기록 저장</a>
+				<a href="#this" class="btn" id="update">구조 기관 사고 정보 전송</a>
+			</div>
 			<form id="commonForm" name="commonForm"></form>
 		</div>
+		<div id="myMap" style="border: 1px solid #BBB; width: 800px; height: 630px; float: left; z-index: 0;"></div>
 		</div>
 	</div>
 	<!-- stateModal -->

@@ -1,93 +1,137 @@
 <%@ page pageEncoding="utf-8"%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>  
+<%@ taglib prefix="ui" uri="http://egovframework.gov/ctl/ui" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+
 <!-- reportModal -->
 <div class="modal fade" id="reportModal" tabindex="-1" role="dialog"
 	aria-labelledby="myModalLabel" aria-hidden="true">
-	<div class="modal-dialog">
+	<div class="modal-dialog modal-lg">
 		<div class="modal-content">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 					<span aria-hidden="true">&times;</span>
 				</button>
-				<h4 class="modal-title" id="myModalLabel">사고 접수</h4>
+				<h4 class="modal-title" id="myModalLabel">e-Call 사고 처리 내역</h4>
 			</div>
 			<div class="modal-body">
-				<ul class="list-group">
-					<li class="list-group-item list-group-item-warning"><b>공통사항</b></li>
-					<li class="list-group-item">
-						<input type="checkbox" id="checkbox1">							
-						<label for="checkbox1">주변 전선이 늘어짐 여부</label>
-					</li>
-					<li class="list-group-item">
-						<input type="checkbox" id="checkbox2">							
-						<label for="checkbox2">주변 교통 통제 여부</label>
-					</li>
-					<li class="list-group-item">
-						<input type="checkbox" id="checkbox3">							
-						<label for="checkbox3">주변 화재 및 연기 여부</label>
-					</li>
-					<li class="list-group-item">
-						<input type="checkbox" id="checkbox4">							
-						<label for="checkbox4">위험물질 및 냄새 여부</label>
-					</li>
-					<li class="list-group-item">
-						<input type="checkbox" id="checkbox5">							
-						<label for="checkbox5">희생자 여부</label>
-					</li>
-				</ul>	
+			
+			<!-- 
+				<table class="board_list">
+					<colgroup>
+						<col style="width: 16%;" />
+						<col style="width: 16%;" />
+						<col style="width: 18%;" />
+						<col style="width: 30%;" />
+						<col style="width: 20%;" />
+					</colgroup>
+					<thead>
+						<tr>
+							<th scope="col">관제번호</th>
+							<th scope="col">담당자</th>
+							<th scope="col">진행상황</th>
+							<th scope="col">사고시간</th>
+							<th scope="col">사고 정보 확인</th>
+						</tr>
+					</thead>
+					<tbody>
+						<c:choose>
+							<c:when test="${fn:length(list) > 0}">
+								<c:forEach var="row" items="${list}" varStatus="status">
+									<tr>
+										<td >${row.eventID}</td>
+										<td>${row.operatorName}</td>
+										<td><c:if test="${row.progress == 0}">
+									미처리
+									</c:if> <c:if test="${row.progress == 1}">
+									처리중
+									</c:if> <c:if test="${row.progress == 2}">
+									처리완료
+									</c:if></td>
+										<td>${row.timestamp}</td>
+										<td class="detail">
+											<button type="button" class="btn" id="detail">사고 정보 확인</button>
+											<input type="hidden" id="IDX" value="${row.eventID}">
+										</td>
+									</tr>
+								</c:forEach>
+							</c:when>
+							<c:otherwise>
+								<tr>
+									<td colspan="4">조회된 결과가 없습니다.</td>
+								</tr>
+							</c:otherwise>
+						</c:choose>
+					</tbody>
+				</table>
 				
-				<ul class="list-group">
-					<li class="list-group-item list-group-item-warning"><b>운전자 상태</b></li>
-					<li class="list-group-item">
-						<input type="checkbox" id="checkbox6">							
-						<label for="checkbox6">의식 여부</label>
-					</li>
-					<li class="list-group-item">
-						<input type="checkbox" id="checkbox7">							
-						<label for="checkbox7">심정지 여부</label>
-					</li>
-					<li class="list-group-item">
-						<input type="checkbox" id="checkbox8">							
-						<label for="checkbox8">화상 여부</label>
-					</li>
-					<li class="list-group-item">
-						<input type="checkbox" id="checkbox9">							
-						<label for="checkbox9">호흡곤란 여부</label>
-					</li>
-					<li class="list-group-item">
-						<input type="checkbox" id="checkbox10">							
-						<label for="checkbox10">관통상 여부</label>
-					</li>
-					<li class="list-group-item">
-						<input type="checkbox" id="checkbox11">							
-						<label for="checkbox11">발작 여부</label>
-					</li>
-					<li class="list-group-item">
-						<input type="checkbox" id="checkbox12">							
-						<label for="checkbox12">안전벨트 착용 여부</label>
-					</li>
-				</ul>
+				-->
 				
-				<ul class="list-group">
-					<li class="list-group-item list-group-item-warning"><b>차량 상태</b></li>
-					<li class="list-group-item">
-						<input type="checkbox" id="checkbox13">							
-						<label for="checkbox13">유리 파손 여부</label>
-					</li>
-					<li class="list-group-item">
-						<input type="checkbox" id="checkbox14">							
-						<label for="checkbox14">에어백 전개 여부</label>
-					</li>
-					<li class="list-group-item">
-						<input type="checkbox" id="checkbox15">							
-						<label for="checkbox15">차량 전복 여부</label>
-					</li>
-				</ul>
+				<table class="board_list">
+					<colgroup>
+						<col style="width: 14%;" />
+						<col style="width: 14%;" />
+						<col style="width: 14%;" />
+						<col style="width: 14%;" />
+						<col style="width: 14%;" />
+						<col style="width: 14%;" />
+						<col style="width: 16%;" />
+					</colgroup>
+					<thead>
+						<tr>
+							<th scope="col">사고 번호</th>
+							<th scope="col">사고 심각도</th>
+							<th scope="col">사고 위치</th>
+							<th scope="col">담당자</th>
+							<th scope="col">사고 처리 현황</th>
+							<th scope="col">구조 기관</th>
+							<th scope="col">사고 정보 확인</th>
+						</tr>
+					</thead>
+					<tbody>
+						<c:choose>
+							<c:when test="${fn:length(list) > 0}">
+								<c:forEach var="row" items="${list}" varStatus="status">
+									<tr>
+										<td>${row.eventID}</td>
+										<td>보통</td>
+										<td>대전</td>
+										<td>${row.operatorName}</td>
+										<td><c:if test="${row.progress == 0}">
+									미처리
+									</c:if> <c:if test="${row.progress == 1}">
+									처리중
+									</c:if> <c:if test="${row.progress == 2}">
+									처리완료
+									</c:if></td>
+										<td>대전 소방본부</td>
+										<td class="detail">
+											<button type="button" class="btn" id="detail">사고 정보 확인</button>
+											<input type="hidden" id="IDX" value="${row.eventID}">
+										</td>
+									</tr>
+								</c:forEach>
+							</c:when>
+							<c:otherwise>
+								<tr>
+									<td colspan="4">조회된 결과가 없습니다.</td>
+								</tr>
+							</c:otherwise>
+						</c:choose>
+					</tbody>
+				</table>
 				
-			</div>
-			<div class="modal-footer">
-				<button type="button" class="btn" data-dismiss="modal">취소</button>
-				<button type="button" class="btn">저장하기</button>
+				
+				<div class="modal-footer">
+					<c:if test="${not empty paginationInfo}">
+						<ui:pagination paginationInfo="${paginationInfo}" type="text"
+							jsFunction="fn_search" />
+					</c:if>
+					<input type="hidden" id="currentPageNo" name="currentPageNo" /> <br />
+					<form id="commonForm" name="commonForm"></form>
+				</div>
 			</div>
 		</div>
 	</div>

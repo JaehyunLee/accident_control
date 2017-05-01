@@ -25,73 +25,17 @@
 			</div>
 		</nav>
 
+		<!-- 사이드 메뉴 -->
+ 		<div id="side-menu-container">
+ 			<div class="side-menu-title">종합 상황</div>
+	    	<div class="list-group">
+    	  		<a data-toggle="modal" href="#stateModal" class="list-group-item">종합 관제 현황</a>
+ 			    <a data-toggle="modal" href="#reportModal" class="list-group-item">사고 처리 내역</a>
+    		</div>
+	  	</div>
+
 		<div class="ecall-controller">
-		<div id="myMap" style="border: 1px solid #BBB; width: 800px; height: 630px; float: left; z-index: 0;"></div>
-
-		<div class="ecall-control-list">
-			<div class="ecall-control-title">
-				<h3>사고 처리 현황</h3>
-			</div>
-			<table class="board_list">
-				<colgroup>
-					<col style="width: 16%;"/>
-					<col style="width: 16%;"/>
-					<col style="width: 18%;"/>
-					<col style="width: 30%;"/>
-					<col style="width: 20%;"/>
-				</colgroup>
-				<thead>
-					<tr>
-						<th scope="col">관제번호</th>
-						<th scope="col">담당자</th>
-						<th scope="col">진행상황</th>
-						<th scope="col">사고시간</th>
-						<th scope="col">사고접수</th>
-					</tr>
-				</thead>
-				<tbody>
-					<c:choose>
-						<c:when test="${fn:length(list) > 0}">
-							<c:forEach var="row" items="${list}" varStatus="status">
-								<tr>
-									<td class="detail">
-										<a href="#this" id="detail">${row.eventID}</a>
-										<input type="hidden" id="IDX" value="${row.eventID}"></td>
-									<td>${row.operatorName}</td>
-									<td><c:if test="${row.progress == 0}">
-									미처리
-									</c:if> <c:if test="${row.progress == 1}">
-									처리중
-									</c:if> <c:if test="${row.progress == 2}">
-									처리완료
-									</c:if></td>
-									<td>${row.timestamp}</td>
-									<td>
-										<button type="button" class="btn" data-toggle="modal" data-target="#reportModal">
-											접수하기
-										</button>
-									</td>
-								</tr>
-							</c:forEach>
-						</c:when>
-						<c:otherwise>
-							<tr>
-								<td colspan="4">조회된 결과가 없습니다.</td>
-							</tr>
-						</c:otherwise>
-					</c:choose>
-				</tbody>
-			</table>
-
-			<c:if test="${not empty paginationInfo}">
-				<ui:pagination paginationInfo="${paginationInfo}" type="text"
-					jsFunction="fn_search" />
-			</c:if>
-			<input type="hidden" id="currentPageNo" name="currentPageNo" /> <br />
-			
-			<form id="commonForm" name="commonForm"></form>
-		
-		</div>
+			<div id="myMap" style="border: 1px solid #BBB; width: 1200px; height: 630px; float: left; z-index: 0;"></div>
 		</div>
 	</div>
 
@@ -109,7 +53,7 @@
 			fn_openBoardWrite();
 		});
 
-		$("a[id='detail']").on("click", function(e) { // 상세보기
+		$("#detail").on("click", function(e) { // 상세보기
 			e.preventDefault();
 			fn_openBoardDetail($(this));
 		});
@@ -299,6 +243,13 @@
 	
 	$('#myModal').on('shown.bs.modal', function () {
 		  $('#myInput').focus()
-	})
+	});
+	
+	$('#side-menu-container').BootSideMenu({
+		side:"left",
+		duration: 500,
+		width: "15%"
+	});
+
 </script>
 </html>
