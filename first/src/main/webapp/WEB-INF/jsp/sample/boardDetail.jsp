@@ -121,7 +121,7 @@
 
   				<!-- Tab panes -->
 	  			<div class="tab-content">
-    			<div role="tabpanel" class="tab-pane active" id="tabpanel-common">
+    			<div role="tabpanel" class="tab-pane fade in active" id="tabpanel-common">
     				<table class="layout-table">
     					<tr>
     						<td>
@@ -162,7 +162,7 @@
     				</table>
 							
     			</div>
-    			<div role="tabpanel" class="tab-pane" id="tabpanel-driver">
+    			<div role="tabpanel" class="tab-pane fade" id="tabpanel-driver">
     				<table class="layout-table">
 	    				<tr>
     						<td>
@@ -217,22 +217,37 @@
     				</table>				
 					
     			</div>
-    			<div role="tabpanel" class="tab-pane" id="tabpanel-vehicle">
-    				<div class="checkbox">
-						<input type="checkbox" id="checkbox-13">							
-						<label for="remember-me">유리 파손 여부</label>
-					</div>
-					<div class="checkbox">
-						<input type="checkbox" id="checkbox-14">							
-						<label for="remember-me">에어백 전개 여부</label>
-					</div>
-					<div class="checkbox">
-						<input type="checkbox" id="checkbox-15">							
-						<label for="remember-me">차량 전복 여부</label>
-					</div>
+    			<div role="tabpanel" class="tab-pane fade" id="tabpanel-vehicle">
+    				<table class="layout-table">
+    					<tr>
+    						<td>
+    							<div class="checkbox">
+									<input type="checkbox" id="checkbox-13">							
+									<label for="remember-me">유리 파손 여부</label>
+								</div>
+    						</td>
+    						<td>
+    							<div class="checkbox">
+									<input type="checkbox" id="checkbox-14">							
+									<label for="remember-me">에어백 전개 여부</label>
+								</div>
+    						</td>
+    					</tr>
+    					<tr>
+    						<td>
+    							<div class="checkbox">
+									<input type="checkbox" id="checkbox-15">							
+									<label for="remember-me">차량 전복 여부</label>
+								</div>
+    						</td>
+    					</tr>
+    				</table>
     			</div>
-	    		<div role="tabpanel" class="tab-pane" id="tabpanel-message">
-	    			<h4>차량 사고 접수 완료</h4>
+    			
+	    		<div role="tabpanel" class="tab-pane fade" id="tabpanel-message">
+	    			<div class="input-group">
+  						<input type="text" class="form-control" placeholder="상담내용을 입력하세요">
+					</div>
 	    		</div>
   				</div>
 			</div>

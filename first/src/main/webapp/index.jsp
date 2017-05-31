@@ -40,8 +40,11 @@
 	});
 
 	function fn_login() {		
-		if(!$.trim($('#inputPassword').val()))
+		if($.trim($('#inputEmail').val()) != 'handy') {
 			 alert('아이디 또는 비밀번호를 확인하세요.');
+		} else if($.trim($('#inputPassword').val()) != '1234') {
+			 alert('아이디 또는 비밀번호를 확인하세요.');
+		}
 		else {
 			var comSubmit = new ComSubmit();
 			comSubmit.setUrl("<c:url value='/sample/openBoardListNot.do' />");

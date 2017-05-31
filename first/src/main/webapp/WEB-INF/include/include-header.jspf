@@ -23,8 +23,13 @@
 <script src="<c:url value='/js/BootSideMenu.js'/>" charset="utf-8"></script>
 
 <!-- Map API -->
-<script type="text/javascript" src="http://openapi.map.naver.com/openapi/v2/maps.js?clientId=QRvBZKcm6HKVtLbTGm1Y"></script>
-<script type="text/javascript" src="//apis.daum.net/maps/maps3.js?apikey=a22e2d3564a4738fc448943a57212135&libraries=services,clusterer"></script>
+<!-- 123.212.190.80 서버 키 -->
+<script type="text/javascript" src="//apis.daum.net/maps/maps3.js?apikey=a22e2d3564a4738fc448943a57212135&libraries=services,clusterer">
+</script>
+<!-- 로컬 서버 키 -->
+<!-- <script type="text/javascript" src="//apis.daum.net/maps/maps3.js?apikey=8e76e79b2a3474d6e2d5afecbec22f81&libraries=services,clusterer">
+</script> -->
+
 
 <!-- Map Style -->
 <style>
@@ -36,4 +41,4 @@
     .info:after {content: '';position: absolute;margin-left: -12px;left: 50%;bottom: 0;width: 22px;height: 12px;background: url('http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/vertex_white.png')}
 </style>
 
-<link rel="stylesheet" type="text/css" href="<c:url value='/css/ui.css?ver=5'/>" />
+<link rel="stylesheet" type="text/css" href="<c:url value='/css/ui.css?ver=2'/>" />

@@ -18,10 +18,11 @@ a:link, a:visited {text-decoration: none; color: #666;}
 /* 상세보기 테이블 디자인 */
 .board_view { width:100%; }
 .board_view tbody th { text-align:left;background:#f7f7f7;color:#3b3a3a }
-.board_view tbody th, .board_view tbody td {padding:15px 0 16px 16px;border-bottom:1px solid #eee}
-.tab-content { padding: 15px; }
-.reporting-title { color:#fff; background:#aaaaaa; text-align:center; padding: 3px;}
+.board_view tbody th, .board_view tbody td {padding:10px 0 10px 10px;border-bottom:1px solid #eee}
+.tab-content td { width: 190px; padding-left: 10px;}
+.reporting-title { color:#fff; background:#aaa; text-align:center; padding: 3px;}
 .reporting-footer { text-align:center; }
+.tabpanel-message .input-group { width: 300px; padding: 10px;}
 
 
 /* 현황판 테이블 디자인 */
