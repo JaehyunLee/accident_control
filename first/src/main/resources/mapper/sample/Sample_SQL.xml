@@ -5,7 +5,6 @@
 
 	<select id="selectBoardListNot" parameterType="hashmap"
 		resultType="hashmap">
-		<!-- <include refid="common.pagingPre" /> -->
 		<![CDATA[
 			SELECT 
 			    AAA.*
@@ -21,16 +20,16 @@
 						progress = 0 ) AS TOTAL_COUNT,
 			        AA.*
 			    FROM(
-				    SELECT
+					SELECT
 						@RNUM := @RNUM + 1 AS RNUM,
 					    eventID,
 					    positionLatitude,
-					    positionLongitude,
+			   		 	positionLongitude,
 					    operatorName,
-			   			progress,
-			    		timestamp
+					    progress,
+					    timestamp
 					FROM
-			    		Event, MSD, Operator, (SELECT @RNUM := 0) A
+					    Event, MSD, Operator, (SELECT @RNUM := 0) A
 					WHERE
 						Event.`operatorID` = Operator.`operatorID` &&
 						Event.`eventID` = MSD.`messageIdentifier` &&
@@ -43,12 +42,11 @@
 			WHERE 
 			    AAA.RNUM BETWEEN #{START} AND #{END}
 		]]>
-
-		<!-- <include refid="common.pagingPost" /> -->
 	</select>
 
 	<select id="selectBoardListIng" parameterType="hashmap"
 		resultType="hashmap">
+		<!-- <include refid="common.pagingPre" /> -->
 		<![CDATA[
 			SELECT 
 			    AAA.*
@@ -86,6 +84,7 @@
 			WHERE 
 			    AAA.RNUM BETWEEN #{START} AND #{END}
 		]]>
+		<!-- <include refid="common.pagingPost" /> -->
 	</select>
 
 	<select id="selectBoardListEd" parameterType="hashmap"
@@ -129,6 +128,34 @@
 		]]>
 	</select>
 
+	
+
+	<select id="selectBoardDetail" parameterType="hashmap"
+		resultType="hashmap">
+		<![CDATA[
+			SELECT
+				eventID,
+			    positionLatitude,
+			    positionLongitude,
+			    operatorName,
+			    progress,
+			    timestamp,
+			    VehicleType,
+			    numberOfPassengers,
+			    operatorPhoneNumber,
+			    deviceType,
+			    phoneNumber
+			FROM
+				Event, MSD, Operator, Device, Possession
+			WHERE
+				Event.`operatorID` = Operator.`operatorID` &&
+				Event.`eventID` = MSD.`messageIdentifier` &&
+				Event.`userID` = Possession.`userID` &&
+				Possession.`deviceID` = Device.deviceID &&
+				eventID = #{IDX}		
+		]]>
+	</select>
+	<!--  
 	<insert id="insertBoard" parameterType="hashmap">
 		<![CDATA[
 			INSERT INTO TB_BOARD
@@ -162,32 +189,6 @@
 		]]>
 	</update>
 
-	<select id="selectBoardDetail" parameterType="hashmap"
-		resultType="hashmap">
-		<![CDATA[
-			SELECT
-				eventID,
-			    positionLatitude,
-			    positionLongitude,
-			    operatorName,
-			    progress,
-			    timestamp,
-			    VehicleType,
-			    numberOfPassengers,
-			    operatorPhoneNumber,
-			    deviceType,
-			    phoneNumber
-			FROM
-				Event, MSD, Operator, Device, Possession
-			WHERE
-				Event.`operatorID` = Operator.`operatorID` &&
-				Event.`eventID` = MSD.`messageIdentifier` &&
-				Event.`userID` = Possession.`userID` &&
-				Possession.`deviceID` = Device.deviceID &&
-				eventID = #{IDX}		
-		]]>
-	</select>
-
 	<update id="updateBoard" parameterType="hashmap">
 		<![CDATA[
 			UPDATE TB_BOARD 
@@ -208,4 +209,6 @@
 				IDX = #{IDX}
 		]]>
 	</update>
+	
+	-->
 </mapper>

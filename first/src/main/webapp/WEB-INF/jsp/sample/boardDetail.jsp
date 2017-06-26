@@ -127,13 +127,13 @@
     						<td>
     							<div class="checkbox">
 									<input type="checkbox" id="checkbox-1">							
-									<label for="remember-me">희생자 여부</label>
+									<label for="checkbox-1">희생자 여부</label>
 								</div>
     						</td>
     						<td>
     							<div class="checkbox">
 									<input type="checkbox" id="checkbox-2">							
-									<label for="remember-me">주변 교통 통제 여부</label>
+									<label for="checkbox-2">주변 교통 통제 여부</label>
 								</div>
     						</td>
     					</tr>
@@ -141,13 +141,13 @@
     						<td>
     							<div class="checkbox">
 									<input type="checkbox" id="checkbox-3">							
-									<label for="remember-me">주변 화재 및 연기 여부</label>
+									<label for="checkbox-3">주변 화재 및 연기 여부</label>
 								</div>
     						</td>
     						<td>
     							<div class="checkbox">
 									<input type="checkbox" id="checkbox-4">							
-									<label for="remember-me">위험물질 및 냄새 여부</label>
+									<label for="checkbox-4">위험물질 및 냄새 여부</label>
 								</div>
     						</td>
     					</tr>
@@ -155,7 +155,7 @@
     						<td>
     							<div class="checkbox">
 									<input type="checkbox" id="checkbox-5">							
-									<label for="remember-me">주변 전선이 늘어짐 여부</label>
+									<label for="checkbox-5">주변 전선이 늘어짐 여부</label>
 								</div>
     						</td>
     					</tr>
@@ -168,13 +168,13 @@
     						<td>
     							<div class="checkbox">
 									<input type="checkbox" id="checkbox-6">							
-									<label for="remember-me">의식 여부</label>
+									<label for="checkbox-6">의식 여부</label>
 								</div>
     						</td>
     						<td>
     							<div class="checkbox">
 									<input type="checkbox" id="checkbox-7">							
-									<label for="remember-me">심정지 여부</label>
+									<label for="checkbox-7">심정지 여부</label>
 								</div>
     						</td>
     					</tr>
@@ -182,13 +182,13 @@
     						<td>
     							<div class="checkbox">
 									<input type="checkbox" id="checkbox-8">							
-									<label for="remember-me">화상 여부</label>
+									<label for="checkbox-8">화상 여부</label>
 								</div>
     						</td>
     						<td>
     							<div class="checkbox">
 									<input type="checkbox" id="checkbox-9">							
-									<label for="remember-me">호흡 곤란 여부</label>
+									<label for="checkbox-9">호흡 곤란 여부</label>
 								</div>
     						</td>
 	    				</tr>
@@ -196,13 +196,13 @@
     						<td>
     							<div class="checkbox">
 									<input type="checkbox" id="checkbox-10">							
-									<label for="remember-me">관통상 여부</label>
+									<label for="checkbox-10">관통상 여부</label>
 								</div>
     						</td>
     						<td>
     							<div class="checkbox">
 									<input type="checkbox" id="checkbox-11">							
-									<label for="remember-me">발작 여부</label>
+									<label for="checkbox-11">발작 여부</label>
 								</div>
     						</td>
     					</tr>
@@ -210,7 +210,7 @@
 	    					<td>
 	    						<div class="checkbox">
 									<input type="checkbox" id="checkbox-12">							
-									<label for="remember-me">안전벨트 착용 여부</label>
+									<label for="checkbox-12">안전벨트 착용 여부</label>
 								</div>
 	    					</td>
     					</tr>
@@ -223,13 +223,13 @@
     						<td>
     							<div class="checkbox">
 									<input type="checkbox" id="checkbox-13">							
-									<label for="remember-me">유리 파손 여부</label>
+									<label for="checkbox-13">유리 파손 여부</label>
 								</div>
     						</td>
     						<td>
     							<div class="checkbox">
 									<input type="checkbox" id="checkbox-14">							
-									<label for="remember-me">에어백 전개 여부</label>
+									<label for="checkbox-14">에어백 전개 여부</label>
 								</div>
     						</td>
     					</tr>
@@ -237,7 +237,7 @@
     						<td>
     							<div class="checkbox">
 									<input type="checkbox" id="checkbox-15">							
-									<label for="remember-me">차량 전복 여부</label>
+									<label for="checkbox-15">차량 전복 여부</label>
 								</div>
     						</td>
     					</tr>
@@ -253,8 +253,8 @@
 			</div>
 			
 			<div class="reporting-footer">	
-				<a href="#this" class="btn" id="list">사고 기록 저장</a>
-				<a href="#this" class="btn" id="update">구조 기관 사고 정보 전송</a>
+				<a href="#this" class="btn" id="report-save">사고 기록 저장</a>
+				<a href="#this" class="btn" id="report-send">구조 기관 사고 정보 전송</a>
 			</div>
 			<form id="commonForm" name="commonForm"></form>
 		</div>
@@ -267,14 +267,14 @@
 
 <script type="text/javascript">
 	$(document).ready(function() {
-		$("#list").on("click", function(e) { //목록으로 버튼
+		$("#report-save").on("click", function(e) { // 저장하기 버튼
 			e.preventDefault();
-			fn_openBoardList();
+			alert("저장되었습니다.");
 		});
 
-		$("#update").on("click", function(e) { //수정하기 버튼
+		$("#report-send").on("click", function(e) { // 전송하기 버튼
 			e.preventDefault();
-			fn_openBoardUpdate();
+			alert("전송되었습니다.");
 		});
 		
 		$("#list_not").on("click", function(e) { // 미처리 관제 버튼
@@ -301,19 +301,6 @@
 			fn_openLogout();
 		});
 	});
-
-	function fn_openBoardList() {
-		var comSubmit = new ComSubmit();
-		var progress = ${map.progress};
-		
-		if(progress == 0)
-			comSubmit.setUrl("<c:url value='/sample/openBoardListNot.do' />");
-		else if(progress == 1)
-			comSubmit.setUrl("<c:url value='/sample/openBoardListIng.do' />");
-		else
-			comSubmit.setUrl("<c:url value='/sample/openBoardListEd.do' />");	
-		comSubmit.submit();
-	}
 	
 	function fn_openBoardListNot() {
 		var comSubmit = new ComSubmit();
@@ -343,14 +330,6 @@
 		var comSubmit = new ComSubmit();
 		comSubmit.setUrl("<c:url value='../index.jsp' />");
 		comSubmit.submit();
-	}
-	
-	function fn_openBoardUpdate() {
-		//var idx = "${map.IDX}";
-		//var comSubmit = new ComSubmit();
-		//comSubmit.setUrl("<c:url value='/sample/openBoardUpdate.do' />");
-		//comSubmit.addParam("IDX", idx);
-		//comSubmit.submit();
 	}
 	
 	// daum map setting

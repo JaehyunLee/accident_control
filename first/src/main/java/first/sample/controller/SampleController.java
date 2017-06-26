@@ -5,6 +5,8 @@ import javax.annotation.Resource;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
@@ -20,6 +22,7 @@ public class SampleController {
 	
 	@RequestMapping(value="/sample/openBoardListNot.do")
     public ModelAndView openBoardListNot(CommandMap commandMap) throws Exception{
+		
     	ModelAndView mv = new ModelAndView("/sample/boardList");
     	
     	Map<String,Object> resultMap = sampleService.selectBoardListNot(commandMap.getMap());
@@ -71,6 +74,19 @@ public class SampleController {
 		
 		return mv;
 	}
+	
+	/** 테스트중인 코드
+	@RequestMapping(value="/report", method = RequestMethod.POST, consumes="application/json")
+	public @ResponseBody ModelAndView openEcallDetailAlarm(CommandMap commandMap) throws Exception{
+		System.out.println("openEcallDetailAlarm!!!!!!!!!!!!!!!!!!!!!!!!");
+		ModelAndView mv = new ModelAndView("/sample/boardDetail");
+		
+		Map<String,Object> map = sampleService.selectBoardDetail(commandMap.getMap());
+		mv.addObject("map", map);
+		
+		return mv;
+	}*/
+	
 	
 	/**
 	@RequestMapping(value="/sample/openBoardWrite.do")

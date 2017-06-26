@@ -97,7 +97,7 @@
 									<tr>
 										<td>${row.eventID}</td>
 										<td>보통</td>
-										<td>알수없음</td>
+										<td>${row.positionLatitude}, ${row.positionLongitude}</td>
 										<td>${row.operatorName}</td>
 										<td><c:if test="${row.progress == 0}">
 									미처리
@@ -108,10 +108,11 @@
 									</c:if></td>
 										<td>미정</td>
 										<td class="detail">
-											<button type="button" class="btn" id="detail">사고 정보 확인</button>
+											<a href="#" id="detail">사고 정보 확인</a>
 											<input type="hidden" id="IDX" value="${row.eventID}">
 										</td>
 									</tr>
+									
 								</c:forEach>
 							</c:when>
 							<c:otherwise>
@@ -123,7 +124,9 @@
 					</tbody>
 				</table>
 				
-				<!--  
+				<form id="commonForm" name="commonForm"></form>
+				
+ 				<!-- 
 				<div class="modal-footer">
 					<c:if test="${not empty paginationInfo}">
 						<ui:pagination paginationInfo="${paginationInfo}" type="text"
@@ -131,8 +134,9 @@
 					</c:if>
 					<input type="hidden" id="currentPageNo" name="currentPageNo" /> <br />
 				</div>	
-				-->
-				<form id="commonForm" name="commonForm"></form>
+				 -->
+
+				
 			</div>
 		</div>
 	</div>

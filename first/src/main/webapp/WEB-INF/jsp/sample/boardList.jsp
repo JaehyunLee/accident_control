@@ -43,6 +43,7 @@
 	<%@ include file="/WEB-INF/include/include-reportModal.jsp"%>	
 	<!-- stateModal -->
 	<%@ include file="/WEB-INF/include/include-stateModal.jsp"%>
+	
 </body>
 
 <script type="text/javascript">
@@ -53,7 +54,7 @@
 			fn_openBoardWrite();
 		});
 
-		$("#detail").on("click", function(e) { // 상세보기
+		$("a[id='detail']").on("click", function(e) { // 상세보기
 			e.preventDefault();
 			fn_openBoardDetail($(this));
 		});

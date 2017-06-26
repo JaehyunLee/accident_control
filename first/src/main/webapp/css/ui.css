@@ -73,8 +73,15 @@ a:link, a:visited {text-decoration: none; color: #666;}
 }
 
 /* 차트 디자인 */
+/*
 .container_frame { margin-top:-60px; overflow:hidden; }
 .container_frame iframe { border:none; }
+*/
+.container_chart {float:left; text-align:center; margin-top: 60px}
+.div_chart1 {float:left; text-align:center; border: 1px solid #ddd;}
+.div_chart2 {float:left; text-align:center; border: 1px solid #ddd;}
+.div_chart3 {float:left; text-align:center; border: 1px solid #ddd;}
+.div_chart4 {float:left; text-align:center; border: 1px solid #ddd;}
 
 /* 체크박스 디자인 */
 input[type="checkbox"] {  /* 실제 체크박스는 화면에서 숨김 */

@@ -26,42 +26,31 @@
 			</div>
 		</nav>
 		
+		<!--   
 		<p class="container_frame">
 			<iFrame src="http://localhost:8081/#/notebook/2CBYAD81F/" width="100%" height="1000px"></iFrame>
 		</p>
-<!-- 
+		-->
+
 		<div class="container_chart">
 			<div class="div_chart1">
-				<h4>지역별 사고 현황</h4>
-				<div id="chart-frame1" style="width: 598px; height: 285px;">
-					<iFrame src="http://localhost:8081/#/notebook/2CBYAD81F/paragraph/20170328-111535_2061037205?asIframe" 
-					width="90%" height="100%"></iFrame>
-				</div>
+				<h3>사고 단말기 현황</h3>
+				<div id="chart1" style="width: 595px; height: 300px;"></div>
 			</div>
 			<div class="div_chart2">
-				<h4>차종별 사고 현황</h4>
-				<div id="chart-frame2" style="width: 598px; height: 285px;">
-					<iFrame src="http://localhost:8081/#/notebook/2CBYAD81F/paragraph/20170328-111356_749395341?asIframe" 
-					width="90%" height="100%"></iFrame>
-				</div>
+				<h3>날짜별 사고 횟수 분포</h3>
+				<div id="chart2" style="width: 595px; height: 300px;"></div>
 			</div>
 			<div class="div_chart3">
-				<h4>월별 사고 현황</h4>
-				<div id="chart-frame3" style="width: 598px; height: 285px;">
-					<iFrame src="http://localhost:8081/#/notebook/2CBYAD81F/paragraph/20170328-111647_1200821727?asIframe" 
-					width="90%" height="100%"></iFrame>
-				</div>
+				<h3>사고 담당자 현황</h3>
+				<div id="chart3" style="width: 595px; height: 300px;"></div>
 			</div>
-			
 			<div class="div_chart4">
-				<h4>연도별 사고 현황</h4>
-				<div id="chart-frame4" style="width: 598px; height: 285px;">
-				<iFrame src="http://localhost:8081/#/notebook/2CBYAD81F/paragraph/20170328-111520_424722085?asIframe" 
-					width="90%" height="100%"></iFrame>
-				</div> 
+				<h3>사고 차종 현황</h3>
+				<div id="chart4" style="width: 595px; height: 300px;"></div>
 			</div>
 		</div>
-		 -->
+
 	</div>
 	<form id="commonForm" name="commonForm"></form>
 	

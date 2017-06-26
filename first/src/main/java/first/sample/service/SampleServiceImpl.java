@@ -32,18 +32,21 @@ public class SampleServiceImpl implements SampleService{
 		return sampleDAO.selectBoardListEd(map);
 		
 	}
-
+	
+	@Override
+	public Map<String, Object> selectBoardDetail(Map<String, Object> map) throws Exception {
+//		sampleDAO.updateHitCnt(map);
+		Map<String, Object> resultMap = sampleDAO.selectBoardDetail(map);
+		return resultMap;
+	}
+	
+	/**
 	@Override
 	public void insertBoard(Map<String, Object> map) throws Exception {
 		sampleDAO.insertBoard(map);
 	}
 
-	@Override
-	public Map<String, Object> selectBoardDetail(Map<String, Object> map) throws Exception {
-		sampleDAO.updateHitCnt(map);
-		Map<String, Object> resultMap = sampleDAO.selectBoardDetail(map);
-		return resultMap;
-	}
+	
 
 	@Override
 	public void updateBoard(Map<String, Object> map) throws Exception{
@@ -54,5 +57,5 @@ public class SampleServiceImpl implements SampleService{
 	public void deleteBoard(Map<String, Object> map) throws Exception {
 		sampleDAO.deleteBoard(map);
 	}
-
+ 	*/
 }

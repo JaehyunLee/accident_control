@@ -32,6 +32,9 @@
 </body>
 
 <script type="text/javascript">
+
+	var stompClient = null;
+
 	$(document).ready(function() {
 		$("#log-in").on("click", function(e) { // 로그인 버튼
 			e.preventDefault();
